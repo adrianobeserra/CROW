@@ -1,0 +1,166 @@
+<head>
+    <meta charset="UTF-8">
+    <!-- VIEWPORT -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="css/reset.css" media="all">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="css/crow.css" media="all">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <script src="jquery/jquery-2.1.3.min.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <script src="js/crow.js"></script>
+</head>
+
+<section class="section-crow">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <button class="bt-padrao bt" id="add-registro">Adicionar</button>
+                <div class="content">
+
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped"> 
+                            <thead> 
+                                <tr> 
+                                    <#list crudColunas as item>
+                                    <th>${item}</th> 
+                                    </#list>
+                                    <th>Ações</th> 
+                                </tr> 
+                            </thead> 
+                            <tbody> 
+                                <#list crudValores as itemValor>
+                                <tr> 
+                                    <#list crudColunas as itemColuna>
+                                    <td>${itemValor[itemColuna]}</td> 
+                                    </#list>
+                                    <td class="ops">
+                                        <a href="" class="tooltips" data-toggle="tooltip" data-placement="right" title="Editar">
+                                            <div class="table-ops editar"></div>
+                                        </a>
+                                        <a class="tooltips" data-toggle="tooltip" data-placement="right" title="Excluir">
+                                            <div class="table-ops excluir bt-excluir"  data-info="info"></div>
+                                        </a>
+                                    </td> 
+                                   
+                                </tr>
+                                </#list>
+                            </tbody> 
+                        </table>
+
+                    </div>
+
+
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+<div class="modal fade" tabindex="-1" role="dialog" id="modal-add">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Adicionar</h4>
+            </div>
+
+            <form action="" id="crow-add-form">
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-xs-12">
+
+
+                            <#list crudColunas as item>
+                            <div class="form-group">
+                                <label for="">${item}</label>
+                                <input type="text" class="form-control" name=${item} placehonder="${item}">
+                            </div>
+                            </#list>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="bt bt-padrao" name="cadastrar" type="submit">Adicionar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modal-update">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Editar</h4>
+            </div>
+
+            <form action="" id="crow-update-form">
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <#list crudColunas as item>
+                            <div class="form-group">
+                                <label for="">${item}</label>
+                                <input type="text" class="form-control" name=${item} placehonder="${item}">
+                            </div>
+                            </#list>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="bt bt-padrao" name="editar" type="submit">Salvar Alterações</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modal-delete">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Excluir</h4>
+            </div>
+
+            <form action="" id="crow-add-form">
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-xs-12">
+
+                            <h3 class="item-delete">Deseja excluir o item?</h3>
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="bt bt-padrao" name="excluir" type="submit">Excluir</button>
+                    <button class="bt bt-nao" type="submit" data-dismiss="modal">Cancelar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
